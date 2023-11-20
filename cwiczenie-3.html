@@ -4,40 +4,43 @@
 <head>
 
 	<meta charset="utf-8">
-	<title>2 - Instrukcja warunkowa w JavaScript</title>
+	<title>3 - Instrukcja warunkowa w JavaScript</title>
 	<link href="arkusz-cwiczenia.css" rel="stylesheet">
 	
 </head>
 
 <body>
 
-	<label> Podaj imię: <input type="text" id="imie"> </label>
-	<label> Podaj wiek: <input type="number" id="wiek"> </label>
-	
-	<input type="submit" value="Sprawdź udział" onclick="sprawdz()">
+	P = ( <input type="number" id="x"> , <input type="number" id="y"> )
+
+	<input type="submit" value="Sprawdź ćwiartkę" onclick="ktora_cwiartka()">
 
 	<div id="wynik"></div>
 	
 	<script>
 	
-		function sprawdz()
+		function ktora_cwiartka()
 		{
-			var wiek = document.getElementById("wiek").value;
-			var imie = document.getElementById("imie").value;
-			var info = "";
-			parseInt(wiek);
-			var m_imie = imie.toLowerCase();
-
-			if((m_imie == 'brad' || m_imie == 'morgan') && wiek >= 18){
-				info = 'Możesz wziąć udziału w seansie za darmo';
-			}else if (wiek > 18){
-				info = 'Możesz wziąć udział';
-			}else if(wiek >= 16 && wiek <= 18){
-				info = 'Możesz wziąć udział, jeśli jesteś z opiekunem';
-			}else if(wiek < 16){
-				info = 'Nie możesz wziąć udziału w seansie';
-			}else{
-				info = 'Nie możesz wziąć udziału w seansie';
+			let x = document.getElementById("x").value;
+			let y = document.getElementById("y").value;
+			
+			if(x == 0 && y == 0){
+				info = 'Punkt P=(0,0) jest początkiem układu współrzędnych';
+			}else if(x == 0  || y == 0){
+				info = 'Punkt leży na jednej z osi układu';
+			}else if(x == 15 && y == 96){
+				info = 'Rene Descartes urodził się w 1596 roku w Turenii na terenie Francji. Pochodził z rodziny szlacheckiej. Początkowo pobierał nauki u Jezuitów, potem zaś przez krótki czas uczył się w Paryżu, a następnie studiował prawo na Uniwersytecie w Poitiers. Kontynuował naukę w Bredzie, gdzie uzyskał stopień z inżynierii wojskowej.';
+				document.getElementById("wynik").style.color = "orange";
+			}else if(x > 0 && y > 0){
+				info = '1 Cwiartka';
+			}else if(x < 0 && y > 0){
+				info = '2 Cwiartka'; 
+			}else if(x < 0 && y < 0){
+				info = '3 Cwiartka';
+			}else if(x > 0 && y < 0){
+				info = '4 Cwiartka';
+			}else {
+				info = 'Błąd';
 			}
 
 			document.getElementById("wynik").innerHTML = info;
