@@ -2,35 +2,75 @@
 <html lang="pl">
 
 <head>
-
-	<meta charset="utf-8">
-	<title>4 - Instrukcja warunkowa w JavaScript</title>
-	<link href="arkusz-cwiczenia.css" rel="stylesheet">
-	
+    <meta charset="utf-8">
+    <title>4 - Instrukcja warunkowa w JavaScript</title>
+    <link href="arkusz-cwiczenia.css" rel="stylesheet">
 </head>
 
 <body>
+    <label> a = <input type="number" id="a"> </label>
+    <label> b = <input type="number" id="b"> </label>
+    <label> c = <input type="number" id="c"> </label>
 
-	<label> a = <input type="number" id="a"> </label>
-	<label> b = <input type="number" id="b"> </label>
-	<label> c = <input type="number" id="c"> </label>
+    <input type="submit" value="Informacje o liczbach" onclick="matematyka()">
 
-	<input type="submit" value="Informacje o liczbach" onclick="matematyka()">
+    <div id="wynik"></div>
 
-	<div id="wynik"></div>
-	
-	<script>
-	
-		function matematyka()
-		{
-			var a = document.getElementById('a').value;
-			var b = document.getElementById('b').value;
-			var c = document.getElementById('c').value;
-			
-			
-		}
+    <script>
+        function matematyka() {
+            var a = parseFloat(document.getElementById('a').value);
+            var b = parseFloat(document.getElementById('b').value);
+            var c = parseFloat(document.getElementById('c').value);
+            var wynik = document.getElementById('wynik');
 
-	</script>
+            if (isNaN(a) || isNaN(b) || isNaN(c)) {
+                wynik.innerHTML = "Wprowadź poprawną liczbę | BŁĄD";
+                return;
+            }
+
+            var min = a;
+            var max = a;
+
+            if (b < min) {
+                min = b;
+            }
+            if (c < min) {
+                min = c;
+            }
+
+            if (b > max) {
+                max = b;
+            }
+            if (c > max) {
+                max = c;
+            }
+
+            wynik.innerHTML = "Najmniejsza liczba: " + min + "<br>";
+            wynik.innerHTML += "Największa liczba: " + max + "<br>";
+            wynik.innerHTML += "Wartość bezwzględna a: " + Math.abs(a) + "<br>";
+            wynik.innerHTML += "Wartość bezwzględna b: " + Math.abs(b) + "<br>";
+            wynik.innerHTML += "Wartość bezwzględna c: " + Math.abs(c) + "<br>";
+
+            if (a % 2 === 0) {
+                wynik.innerHTML += "Liczba a jest parzysta<br>";
+            } else {
+                wynik.innerHTML += "Liczba a jest nieparzysta<br>";
+            }
+
+            if (b % 2 === 0) {
+                wynik.innerHTML += "Liczba b jest parzysta<br>";
+            } else {
+                wynik.innerHTML += "Liczba b jest nieparzysta<br>";
+            }
+
+            if (c % 2 === 0) {
+                wynik.innerHTML += "Liczba c jest parzysta<br>";
+            } else {
+                wynik.innerHTML += "Liczba c jest nieparzysta<br>";
+            }
+        }
+    </script>
 
 </body>
+
 </html>
